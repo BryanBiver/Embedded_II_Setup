@@ -1,15 +1,9 @@
-typedef struct 
-{
-	uint32_t MSION: 1;
-	uint32_t MSIRDY: 1;
-	uint32_t MSIPLLEN: 1;
-	uint32_t MSIRGSEL: 5;
-	uint32_t MSIRANGE: 4;
+typedef struct {
 	uint32_t HSION: 1;
-	uint32_t HSIKERON: 1;
 	uint32_t HSIRDY: 1;
-	uint32_t HSIASFS: 1;
-	uint32_t RESERVED0: 4;
+	uint32_t RESERVED0: 1;
+	uint32_t HSITRIM: 5;
+	uint32_t HSICAL: 8;
 	uint32_t HSEON: 1;
 	uint32_t HSERDY: 1;
 	uint32_t HSEBYP: 1;
@@ -17,66 +11,103 @@ typedef struct
 	uint32_t RESERVED1: 4;
 	uint32_t PLLON: 1;
 	uint32_t PLLRDY: 1;
-	uint32_t PLLSAI1ON: 1;
-	uint32_t PLLSAI2ON: 1;
-	uint32_t PLLSAI2RDY: 1;
+	uint32_t PLLI2SON: 1;
+	uint32_t PLLI2SRDY: 1;
+	uint32_t PLSAION: 1;
+	uint32_t PLSAIRDY: 1;
 	uint32_t RESERVED2: 2;
 } RCC_CR_TypeDef;
 
-typedef struct 
-{
-	uint32_t MSICAL: 8;
-    uint32_t MSITRIM: 8;
-    uint32_t HSICAL: 8;
-    uint32_t HSITRIM: 8;
+typedef struct {
+	uint32_t SW: 2;
+	uint32_t SWS: 2;
+	uint32_t HPRE: 4;
+	uint32_t RESERVED0: 2;
+	uint32_t PPRE1: 3;
+	uint32_t PPRE2: 3;
+	uint32_t RTCPRE: 5;
+	uint32_t MCO1: 2;
+	uint32_t RESERVED1: 1;
+	uint32_t MCO1PRE: 3;
+	uint32_t MCO2PRE: 3;
+	uint32_t MCO2: 2;
 } RCC_CFGR_TypeDef;
 
-typedef struct 
-{
-    uint32_t SW: 2;
-    uint32_t SWS: 2;
-    uint32_t HPRE: 4;
-    uint32_t PPRE1: 3;
-    uint32_t PPRE2: 3;
-    uint32_t RESERVED0: 1;
-    uint32_t STOPWUCK: 1;
-    uint32_t RESERVED1: 8;
-    uint32_t MCOSEL: 4;
-    uint32_t MCOPRE: 3;
-    uint32_t RESERVED2: 1;
-} RCC_PLLCFGR_TypeDef;
+typedef struct {
+	uint32_t GPIOAEN:1;
+	uint32_t GPIOBEN:1;
+	uint32_t GPIOCEN:1;
+	uint32_t GPIODEN:1;
+	uint32_t GPIOEEN:1;
+	uint32_t GPIOFEN:1;
+	uint32_t GPIOGEN:1;
+	uint32_t GPIOHEN:1;
+	uint32_t RESERVED1:4;
+	uint32_t CRCEN:1;
+	uint32_t RESERVED2:5;
+	uint32_t BKPSRAMEN:1;
+	uint32_t RESERVED3:2;
+	uint32_t DMA1EN:1;
+	uint32_t DMA2EN:1;
+	uint32_t RESERVED4:6;
+	uint32_t OTGHSEN:1;
+	uint32_t OTGHSULPIEN:1;
+	uint32_t RESERVED5:1;
+} RCC_AHB1ENR_TypeDef;
 
-typedef struct 
-{
-    uint32_t RESERVED0: 4;
-    uint32_t PLLSAI1M: 4;
-    uint32_t PLLSAI1N: 7;
-    uint32_t RESERVED1: 1;
-    uint32_t PLLSAI1PEN: 1;
-    uint32_t PLLSAI1P: 1;
-    uint32_t RESERVED2: 2;
-    uint32_t PLLSAI1QEN: 1;
-    uint32_t PLLSAI1Q: 2;
-    uint32_t RESERVED3: 1;
-    uint32_t PLLSAI1REN: 1;
-    uint32_t PLLSAI1R: 2;
-    uint32_t PLLSAI1PDIV: 5;
-} RCC_PLLSAI1CFGR_TypeDef;
+typedef struct {
+	uint32_t TIM2EN: 1;
+	uint32_t TIM3EN: 1;
+	uint32_t TIM4EN: 1;
+	uint32_t TIM5EN: 1;
+	uint32_t TIM6EN: 1;
+	uint32_t TIM7EN: 1;
+	uint32_t TIM12EN: 1;
+	uint32_t TIM13EN: 1;
+	uint32_t TIM14EN: 1;
+	uint32_t RESERVED1: 2;
+	uint32_t WWDGEN: 1;
+	uint32_t RESERVED2: 2;
+	uint32_t SPI2EN: 1;
+	uint32_t SPI3EN: 1;
+	uint32_t SPDIFRXEN: 1;
+	uint32_t USART2EN: 1;
+	uint32_t USART3EN: 1;
+	uint32_t UART4EN: 1;
+	uint32_t UART5EN: 1;
+	uint32_t I2C1EN: 1;
+	uint32_t I2C2EN: 1;
+	uint32_t I2C3EN: 1;
+	uint32_t FMI2C1EN: 1;
+	uint32_t CAN1EN: 1;
+	uint32_t CAN2EN: 1;
+	uint32_t CECEN: 1;
+	uint32_t PWREN: 1;
+	uint32_t DACEN: 1;
+	uint32_t RESERVED: 2;
+} RCC_APB1ENR_TypeDef;
 
-typedef struct 
-{
-    uint32_t RESERVED0: 4;
-    uint32_t PLLSAI2M: 4;
-    uint32_t PLLSAI2N: 7;
-    uint32_t RESERVED1: 1;
-    uint32_t PLLSAI2PEN: 1;
-    uint32_t PLLSAI2P: 1;
-    uint32_t RESERVED2: 2;
-    uint32_t PLLSAI2QEN: 1;
-    uint32_t PLLSAI2Q: 2;
-    uint32_t RESERVED3: 1;
-    uint32_t PLLSAI2REN: 1;
-    uint32_t PLLSAI2R: 2;
-    uint32_t PLLSAI2PDIV: 5;
-} RCC_PLLSAI1CFGR_TypeDef;
+typedef struct {
+	uint32_t TIM1EN:1;
+	uint32_t TIM8EN:1;
+	uint32_t RESERVED1:2;
+	uint32_t USART1EN:1;
+	uint32_t USART6EN:1;
+	uint32_t RESERVED2:2;
+	uint32_t ADC1EN:1;
+	uint32_t ADC2EN:1;
+	uint32_t ADC3EN:1;
+	uint32_t SDI0EN:1;
+	uint32_t SDI1EN:1;
+	uint32_t SDI4EN:1;
+	uint32_t SYSCFGEN:1;
+	uint32_t RESERVED3:1;
+	uint32_t TIM9EN:1;
+	uint32_t TIM10EN:1;
+	uint32_t TIM11EN:1;
+	uint32_t RESERVED4:3;
+	uint32_t SAT1EN:1;
+	uint32_t SAT2EN:1;
+	uint32_t RESERVED5:8;
+} RCC_APB2ENR_TypeDef;
 
